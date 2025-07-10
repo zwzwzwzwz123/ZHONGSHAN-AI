@@ -117,5 +117,3 @@ def new_uid(output_uid):
     for uid in output_uid:
         net_uid.append(uid[1])
     return net_uid
-
-
