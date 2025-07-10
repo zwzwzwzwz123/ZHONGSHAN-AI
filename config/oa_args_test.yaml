@@ -1,0 +1,66 @@
+SA:  &same_guess
+  initial_guess: [26, 26, 26]
+GDA:  *same_guess
+  
+GA:  &same_bounds
+  bounds: {'value0':(20, 30)}
+  
+BO:  
+  <<: *same_bounds
+  init_points: 5 
+  iter_times: 30
+
+DQN:
+  learning_rate: 0.0003
+  total_timesteps: 1000000
+
+BDQ:
+  state_dim: 7
+  hidden_dims: 256
+  action_dims: 5
+  learning_rate: 0.0003
+  gamma: 0.9
+  epsilon: 0.001
+  target_update: 2
+  device: 'cuda'
+  mode: 'train'
+
+PPO:
+  learning_rate: 0.0003
+  total_timesteps: 1000000
+
+DDPG:
+  learning_rate: 0.0003
+  total_timesteps: 1000000
+
+SAC:
+  learning_rate: 0.0003
+  total_timesteps: 1000000
+
+Custom_Optimization:
+# 测试用例 - 简化版本，去掉压缩机相关参数
+  ac_uid: [test_ac_1, test_ac_2, test_ac_3]
+  # 注释掉压缩机相关参数
+  # converter_uid: [test_converter_1]
+  default_ac_onoff_status_setting: [1, 0, 1]
+  default_ac_temp_setting: [26.0, 25.0, 27.0]
+  # default_converter_freq_setting: [40]
+  temp_raising_sharply_threshold: 3.0
+  temp_cross_peak_threshold: 1.0
+  observing_times_threshold_turningoff_ac: 2
+  observing_times_threshold_control_temp_ac: 2 
+  # observing_times_threshold_control_freq: 2
+  temp_safety_boundary:
+    room_temp_lower_boundary: [18.0, 18.0]
+    room_temp_higher_boundary: [30.0, 30.0]
+    ac_temp_lower_boundary: [18.0, 18.0, 18.0]
+    ac_temp_higher_boundary: [30.0, 30.0, 30.0]
+  temp_observing_boundary: 
+    room_temp_boundary: [28.0, 28.0]
+    ac_temp_boundary: [29.0, 29.0]
+  temp_control_highest_boundary: [18.0, 18.0, 18.0]
+  freq_control_lowest_boundary: [35]  # 保留这个必需参数，即使不使用
+  turningoff_ac_priority: [test_ac_2, test_ac_1, test_ac_3]
+  temp_control_ac_priority: [test_ac_1, test_ac_2, test_ac_3]
+  min_temp_control_step: 0.5
+  max_num_ac_can_turnoff: 2 

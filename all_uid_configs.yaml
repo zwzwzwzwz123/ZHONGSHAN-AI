@@ -1,0 +1,288 @@
+# 新大楼二楼关口局机房2_6#EISU
+room_name: "新大楼二楼关口局机房2_6#EISU"
+ac_num_params: 4
+ac_freq_num_params: 2
+uid:
+  device_uid:
+    ac: ["FoShan.50.5253120","FoShan.50.5255168","FoShan.50.5269504", "FoShan.50.5263360"]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.5265409", "FoShan.50.5265411"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.5253121",
+        "FoShan.50.5255169",
+        "FoShan.50.5263361",
+        "FoShan.50.4751405",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.5253121",
+        "FoShan.50.5255169",
+        "FoShan.50.5269509",
+        "FoShan.50.5263361",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.5253162",
+        "FoShan.50.5255210",
+        "FoShan.50.5269551",
+        "FoShan.50.5263412",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting: ["力博特精密空调1#开关机","力博特精密空调2#开关机","维帝80KW空调3#开关机","艾特网60KW空调4#开关机",]
+    ac_temperature_setting: ["力博特精密空调1#回风温度设定","力博特精密空调2#回风温度设定","维帝80KW空调3#回风温度设定","艾特网60KW空调4#回风温度设定",]
+    converter_freq_setting: [""]
+
+# 新大楼二楼无线交换局机房11#EISU
+room_name: "新大楼二楼无线交换局机房11#EISU"
+ac_num_params: 5
+ac_freq_num_params: 2
+uid:
+  device_uid:
+    ac:
+      [
+        "FoShan.50.4737024",
+        "FoShan.50.4745216",
+        "FoShan.50.4739072",
+        "FoShan.50.4741120",
+        "FoShan.50.4751360",
+      ]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.4734977", "FoShan.50.4734979"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.4737042",
+        "FoShan.50.4739090",
+        "FoShan.50.4741138",
+        "FoShan.50.4745235",
+        "FoShan.50.4751405",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.4737025",
+        "FoShan.50.4739073",
+        "FoShan.50.4741121",
+        "FoShan.50.4745221",
+        "FoShan.50.4751361",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.4737066",
+        "FoShan.50.4739114",
+        "FoShan.50.4741162",
+        "FoShan.50.4745263",
+        "FoShan.50.4751408",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting:
+      [
+        "力博特精密空调1#开关机",
+        "维帝80KW空调2#开关机",
+        "力博特精密空调3#开关机",
+        "力博特精密空调4#开关机",
+        "艾特网60KW空调5#开关机",
+      ]
+    ac_temperature_setting:
+      [
+        "力博特精密空调1#回风温度设定",
+        "维帝80KW空调2#回风温度设定",
+        "力博特精密空调3#回风温度设定",
+        "力博特精密空调4#回风温度设定",
+        "艾特网60KW空调5#回风温度设定",
+      ]
+    converter_freq_setting: ["二楼空调变频器XVAC运行频率下限值"]
+
+
+# 新大楼三楼传输室7#EISU-抄电表
+room_name: "新大楼三楼传输室7#EISU-抄电表"
+ac_num_params: 6
+ac_freq_num_params: 2
+uid:
+  device_uid:
+    ac: ["FoShan.50.5804032","FoShan.50.5777408","FoShan.50.5816320", "FoShan.50.5797888","FoShan.50.5799936", ]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.5791745", "FoShan.50.5791747"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.4737042",
+        "FoShan.50.4739090",
+        "FoShan.50.4741138",
+        "FoShan.50.4745235",
+        "FoShan.50.4751405",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.5804037",
+        "FoShan.50.5777409",
+        "FoShan.50.5816321",
+        "FoShan.50.5797893",
+        "",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.5804079",
+        "FoShan.50.5777450",
+        "FoShan.50.5816368",
+        "FoShan.50.5797935",
+        "",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting: ["维帝80KW空调1#开关机","力博特精密空调2#开关机","艾特网60KW空调3#开关机","维帝60KW空调4#开关机","美的精密空调5#开关机"]
+    ac_temperature_setting: ["维帝80KW空调1#回风温度设定","力博特精密空调2#回风温度设定","艾特网60KW空调3#回风温度设定","维帝60KW空调4#回风温度设定","美的精密空调5#回风温度设定"]
+    converter_freq_setting: ["二楼空调变频器XVAC运行频率下限值"]
+
+# 新大楼四楼数据机房9#EISU-抄电表
+room_name: "新大楼四楼数据机房9#EISU-抄电表"
+ac_num_params: 4
+ac_freq_num_params: 2
+uid:
+  device_uid:
+    ac: ["FoShan.50.7391232", "FoShan.50.7350272", "FoShan.50.7389184", "FoShan.50.7354368"]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.4734977", "FoShan.50.4734979"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.7350273",
+        "FoShan.50.7354369",
+        "FoShan.50.7389185",
+        "FoShan.50.7391233",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.7391233",
+        "FoShan.50.7350273",
+        "FoShan.50.7389185",
+        "FoShan.50.7354369",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.7391276",
+        "FoShan.50.7350314",
+        "FoShan.50.7389228",
+        "FoShan.50.7354410",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting: ["艾特网精密空调1#开关机","力博特精密空调2#开关机","艾特网精密空调3#开关机","力博特精密空调4#开关机"]
+    ac_temperature_setting: ["艾特网精密空调1#回风温度设定","力博特精密空调2#回风温度设定","艾特网精密空调3#回风温度设定","力博特精密空调4#回风温度设定"]
+    converter_freq_setting: [""]
+
+# 新大楼五楼IDC机房（26-29#）-抄电表
+room_name: "新大楼五楼IDC机房(26-29#)-抄电表"
+ac_num_params: 4
+ac_freq_num_params: 3
+uid:
+  device_uid:
+    ac: [ "FoShan.50.13160448","FoShan.50.13129728", "FoShan.50.13131776", "FoShan.50.13187072"]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.13135873", "FoShan.50.13135874", "FoShan.50.13135875", "FoShan.50.13139969", "FoShan.50.13139970", "FoShan.50.13139971"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.4737042",
+        "FoShan.50.4739090",
+        "FoShan.50.4741138",
+        "FoShan.50.4745235",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.13160453",
+        "FoShan.50.13129733",
+        "FoShan.50.13131781",
+        "FoShan.50.13187077",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.13160513",
+        "FoShan.50.13129793",
+        "FoShan.50.13131841",
+        "FoShan.50.13187137",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting: ["1#维谛空调PEX+AP开关机","2#维谛空调PEX+AP开关机","3#维谛空调PEX+AP开关机","4#维谛空调PEX+AP开关机"]
+    ac_temperature_setting: ["1#维谛空调PEX+AP回风温度设定","2#维谛空调PEX+AP回风温度设定","3#维谛空调PEX+AP回风温度设定","4#维谛空调PEX+AP回风温度设定"]
+    converter_freq_setting: [""]
+
+# 新大楼四楼IDC机房(18-21#EISU):思泰空调没有相关测点，无法调整
+room_name: "新大楼四楼IDC机房(18-21#EISU)"
+ac_num_params: 3
+ac_freq_num_params: 2
+uid:
+  device_uid:
+    ac: [ "FoShan.50.25776128","FoShan.50.25774080", "FoShan.50.25778176"]
+    converter: [""]
+  # all_uid: []
+  # input_predict_uid: []
+  # output_predict_uid: []
+  input_optimization_uid:
+    room_temperature: ["FoShan.50.25702401", "FoShan.50.25702403", "FoShan.50.25704449", "FoShan.50.25704451", "FoShan.50.25706497", "FoShan.50.25706499"]
+    ac_onoff_setting:
+      [
+        "FoShan.50.4737042",
+        "FoShan.50.4739090",
+        "FoShan.50.4741138",
+      ]
+    ac_temperature:
+      [
+        "FoShan.50.25776129",
+        "FoShan.50.25774081",
+        "FoShan.50.25778177",
+      ]
+    ac_temperatue_settings:
+      [
+        "FoShan.50.25776176",
+        "FoShan.50.25774128",
+        "FoShan.50.25778224",
+      ]
+
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+name:
+  optimization:
+    ac_onoff_status_setting: ["艾特网能空调3开关机","艾特网能空调4开关机","艾特网能空调5开关机"]
+    ac_temperature_setting: ["艾特网能空调3回风温度设定","艾特网能空调4回风温度设定","艾特网能空调5回风温度设定"]
+    converter_freq_setting: [""]

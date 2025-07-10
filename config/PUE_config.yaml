@@ -1,0 +1,171 @@
+# InfluxDB 1.x 配置
+
+# 读取：数据中心内所有空调、环境的状态
+influxdb_dc_status_data:
+  host: &host "localhost"  # InfluxDB 1.x 服务器地址
+  port: &port 8086         # InfluxDB 1.x 默认端口
+  username: &username "admin"  # 用户名
+  password: &password "password"  # 密码
+  database: "dc_status_data_db"  # 数据库名称
+  ssl: &ssl false          # 是否使用SSL
+  verify_ssl: &verify_ssl false  # 是否验证SSL证书
+
+# 写入：预测模块的输出
+influxdb_prediction_data:
+  host: *host
+  port: *port
+  username: *username
+  password: *password
+  database: "prediction_data_db"
+  ssl: *ssl
+  verify_ssl: *verify_ssl
+
+# 写入：优化模块的实际输出（实际用于调控的输出）
+influxdb_setting_data:
+  host: *host
+  port: *port
+  username: *username
+  password: *password
+  database: "setting_data_db"
+  ssl: *ssl
+  verify_ssl: *verify_ssl
+
+# 写入：优化模块的参考输出
+influxdb_reference_data:
+  host: *host
+  port: *port
+  username: *username
+  password: *password
+  database: "reference_data_db"
+  ssl: *ssl
+  verify_ssl: *verify_ssl
+
+  # 空调可设置参数
+minimum_air_conditioner_setting_temperature: 17
+maximum_air_conditioner_setting_temperature: 40
+minimum_air_conditioner_setting_humidity: 30
+maximum_air_conditioner_setting_humidity: 70
+minimum_number_of_on_air_conditioner: 0
+maximum_number_of_on_air_conditioner: 6
+minimum_compressor_frequency: 0
+maximum_compressor_frequency: 100
+minimum_number_of_on_compressors: 0
+maximum_number_of_on_compressors: 10
+
+# 空调不可设置参数
+minimum_indoor_temperature: 20
+maximum_indoor_temperature: 20
+maximum_energy_consumption: 10000
+
+
+# 重要注释：
+# 1、【艾特网能空调1#】这台空调的能耗读取【80KW精密空调-电表】，【80KW精密小型空调】就是【艾特网能空调1#】
+# 2、【艾特网能空调2#】、【美的空调】这两台空调的总能耗读取【维谛3号、美的、80KW精密小型空调共用1-电表】/【维谛3号、美的、80KW精密小型空调共用2-电表】
+#   【维谛3号、美的、80KW精密小型空调共用1-电表】、【维谛3号、美的、80KW精密小型空调共用2-电表】两个相同，取其中一个就行，本程序取前者（共用1-电表）
+#   【维谛空调3】并没有接到【维谛3号、美的、80KW精密小型空调共用1-电表】/【维谛3号、美的、80KW精密小型空调共用2-电表】上
+# 3、【维谛精密空调1】、【维谛空调2】、【维谛空调3】这三台空调的总能耗读取【维谛精密空调2-电表】
+# 4、空调的能耗读取电表的【组合有功电能】，需要注意能耗是累计的，能耗差才是这段时间的真正能耗
+# 5、【维谛精密空调1-电表】没有电流，没有用
+# 6、六台空调都只有回风温度，没有送风温度
+# 7、室内温湿度读取【AI调优温湿度1-48#】
+# 8、实际调控中，空调不允许关闭，只允许调控空调的制冷模式（制冷/空闲）
+
+device_uid:
+  air_conditioner_uid: [ "95207247-6d63-480c-8dba-4dd18fa6ad74", "77db6bc2-5165-4011-be0c-108b0429f6dd","d495e162-0f3a-4e26-adcd-103fff68b5a0",
+                         "16680285-3996-4011-8525-82adbacba5a5", "50200f7b-1158-40a6-8604-3959e395db2c", "326650fc-aef5-43f9-8405-37e5555e2df5" ] # 共6个
+  air_conditioner_name: [ "艾特网能空调1#","艾特网能空调2#", "美的空调","维谛精密空调1" ,"维谛空调2", "维谛空调3" ] # 共6个
+
+# 在写下述uid时，一定要注意对于同一台空调，填写其不同参数对应的uid时位置一定要对应，比如"rd_ITload.1"和 "rd_ec.1"都在第一个，对应第一台空调
+dc_status_data_uid:
+  # 非空调参数
+  outdoor_temperature_sensor_uid: [ "ZhongShan.27.126398465" ]
+  outdoor_humidity_sensor_uid: [ "ZhongShan.27.126398466" ]
+  indoor_temperature_sensor_uid: [ "ZhongShan.27.2177025","ZhongShan.27.2177026","ZhongShan.27.2177027","ZhongShan.27.2177028",
+                                   "ZhongShan.27.2177029","ZhongShan.27.2177030","ZhongShan.27.2177031","ZhongShan.27.2177032",
+                                   "ZhongShan.27.2179073","ZhongShan.27.2179074","ZhongShan.27.2179075","ZhongShan.27.2179076",
+                                   "ZhongShan.27.2179077","ZhongShan.27.2179078","ZhongShan.27.2179079","ZhongShan.27.2179080",
+                                   "ZhongShan.27.2181121","ZhongShan.27.2181122","ZhongShan.27.2181123","ZhongShan.27.2181124",
+                                   "ZhongShan.27.2181125","ZhongShan.27.2181126","ZhongShan.27.2181127","ZhongShan.27.2181128",
+                                   "ZhongShan.27.2187265","ZhongShan.27.2187266","ZhongShan.27.2187267","ZhongShan.27.2187268",
+                                   "ZhongShan.27.2187269","ZhongShan.27.2187270","ZhongShan.27.2187271","ZhongShan.27.2187272",
+                                   "ZhongShan.27.2189313","ZhongShan.27.2189314","ZhongShan.27.2189315","ZhongShan.27.2189316",
+                                   "ZhongShan.27.2189317","ZhongShan.27.2189318","ZhongShan.27.2189319","ZhongShan.27.2189320",
+                                   "ZhongShan.27.2191361","ZhongShan.27.2191362","ZhongShan.27.2191363","ZhongShan.27.2191364",
+                                   "ZhongShan.27.2191365","ZhongShan.27.2191366","ZhongShan.27.2191367","ZhongShan.27.2191368" ]  # 共48个
+  indoor_humidity_sensor_uid: [ "ZhongShan.27.2177033","ZhongShan.27.2177034","ZhongShan.27.2177035","ZhongShan.27.2177036",
+                                "ZhongShan.27.2177037","ZhongShan.27.2177038","ZhongShan.27.2177039","ZhongShan.27.2177040",
+                                "ZhongShan.27.2179081","ZhongShan.27.2179082","ZhongShan.27.2179083","ZhongShan.27.2179084",
+                                "ZhongShan.27.2179085","ZhongShan.27.2179086","ZhongShan.27.2179087","ZhongShan.27.2179088",
+                                "ZhongShan.27.2181129","ZhongShan.27.2181130","ZhongShan.27.2181131","ZhongShan.27.2181132",
+                                "ZhongShan.27.2181133","ZhongShan.27.2181134","ZhongShan.27.2181135","ZhongShan.27.2181136",
+                                "ZhongShan.27.2187273","ZhongShan.27.2187274","ZhongShan.27.2187275","ZhongShan.27.2187276",
+                                "ZhongShan.27.2187277","ZhongShan.27.2187278","ZhongShan.27.2187279","ZhongShan.27.2187280",
+                                "ZhongShan.27.2189321","ZhongShan.27.2189322","ZhongShan.27.2189323","ZhongShan.27.2189324",
+                                "ZhongShan.27.2189325","ZhongShan.27.2189326","ZhongShan.27.2189327","ZhongShan.27.2189328",
+                                "ZhongShan.27.2191369","ZhongShan.27.2191370","ZhongShan.27.2191371","ZhongShan.27.2191372",
+                                "ZhongShan.27.2191373","ZhongShan.27.2191374","ZhongShan.27.2191375","ZhongShan.27.2191376" ] # 共48个
+  return_air_temperature_uid: [ "abbc6509_0004_45ed_8596_257e1e961566","fc55ccbe_1b66_4f5a_94be_fb6a9cbeaf1e","431d54b4_b25f_4f73_8f97_14509226cff1",
+                                "1ea16170_5773_44fb_8d0b_0b8d1158f48f","bba3afd4_573f_4f90_b914_88082ba37fc2","ec06637d_cab9_425b_8b40_eb0856c75717" ]
+  return_air_humidity_uid: [ "6efaff90_1710_4ff8_a984_c2e9738b0854","44d8bc51_a008_4b06_8213_4f57f20a6e36","e5c213b4_eb65_4c3c_8a37_de691a660ae1",
+                             "b0c8d5bc_71d0_47d1_bd13_5160e181885d","9202acf8_8fc5_4a60_ae41_cfafa38f66a5", "37395160_fb49_40e8_a3d1_cb3a0d212595" ]
+  energy_consumption_collection_uid: [ "df07a719_f112_494f_ad57_910c6d3466aa", "c413bdb5_de18_4f1c_ba6f_c2ac6a7d0b46","ae51067a_0ac3_4970_a0a9_386f8acc33cc" ]
+  # 空调参数
+  air_conditioner_setting_temperature_uid: [ "a9389c32_d9ae_4b6f_8f36_cc44a579cbe3","1a15bfc4_061e_4fd9_83b3_935913245442","3d095d6a_10b0_49ca_b34f_3a43fd6b8323",
+                                             "5ec2439a_0b25_4e43_9a03_12c278944a88","4d620ccd_995f_4bbc_aa45_97e1770fea8f","c7ce0642_06e2_4570_92ed_33b479f3e63e" ]
+  air_conditioner_setting_humidity_uid: [ "2d24efd0_f399_49ff_a432_c24c1a275104","e8544812_8634_4c39_b752_86cebdddbd0f","16b715e0_737c_413a_8096_7be04504d0fe",
+                                          "71bc3eb7_a849_48c7_b3f4_c31ae90f9d3d","a436bad2_9c9f_4a24_960c_5c5dd77bc4cc","5b21d614_276e_4235_95f5_802428015400" ]
+  air_conditioner_cooling_mode_uid: [ "c80d7d41_ba9e_447c_940a_e4bfac5b9b45","5a11fef2_f67f_45cc_b373_17146f52578c","54543fbb_5fc8_4402_96b3_497b8fb28d60","5387d77e_8b6b_4f55_ba9d_1d668786c90a",
+                                      "b45ac2fa_3001_4ce5_9492_550ea45038b0",
+                                      "3adead0e_419c_4918_979d_272a6e647399","73f94560_4ee9_4a52_b534_65ae914ac21b","ed85cb79_4b9b_456a_beef_32b848c03852" ]  # 每台艾特网能空调都有两个uid，对应于系统1、2
+
+prediction_data_uid:
+  # 非空调参数
+  outdoor_temperature_sensor_uid: [ "ZhongShan.27.126398465" ]
+  outdoor_humidity_sensor_uid: [ "ZhongShan.27.126398466" ]
+  indoor_temperature_sensor_uid: [ "ZhongShan.27.2177025","ZhongShan.27.2177026","ZhongShan.27.2177027","ZhongShan.27.2177028",
+                                   "ZhongShan.27.2177029","ZhongShan.27.2177030","ZhongShan.27.2177031","ZhongShan.27.2177032",
+                                   "ZhongShan.27.2179073","ZhongShan.27.2179074","ZhongShan.27.2179075","ZhongShan.27.2179076",
+                                   "ZhongShan.27.2179077","ZhongShan.27.2179078","ZhongShan.27.2179079","ZhongShan.27.2179080",
+                                   "ZhongShan.27.2181121","ZhongShan.27.2181122","ZhongShan.27.2181123","ZhongShan.27.2181124",
+                                   "ZhongShan.27.2181125","ZhongShan.27.2181126","ZhongShan.27.2181127","ZhongShan.27.2181128",
+                                   "ZhongShan.27.2187265","ZhongShan.27.2187266","ZhongShan.27.2187267","ZhongShan.27.2187268",
+                                   "ZhongShan.27.2187269","ZhongShan.27.2187270","ZhongShan.27.2187271","ZhongShan.27.2187272",
+                                   "ZhongShan.27.2189313","ZhongShan.27.2189314","ZhongShan.27.2189315","ZhongShan.27.2189316",
+                                   "ZhongShan.27.2189317","ZhongShan.27.2189318","ZhongShan.27.2189319","ZhongShan.27.2189320",
+                                   "ZhongShan.27.2191361","ZhongShan.27.2191362","ZhongShan.27.2191363","ZhongShan.27.2191364",
+                                   "ZhongShan.27.2191365","ZhongShan.27.2191366","ZhongShan.27.2191367","ZhongShan.27.2191368" ]  # 共48个
+  indoor_humidity_sensor_uid: [ "ZhongShan.27.2177033","ZhongShan.27.2177034","ZhongShan.27.2177035","ZhongShan.27.2177036",
+                                "ZhongShan.27.2177037","ZhongShan.27.2177038","ZhongShan.27.2177039","ZhongShan.27.2177040",
+                                "ZhongShan.27.2179081","ZhongShan.27.2179082","ZhongShan.27.2179083","ZhongShan.27.2179084",
+                                "ZhongShan.27.2179085","ZhongShan.27.2179086","ZhongShan.27.2179087","ZhongShan.27.2179088",
+                                "ZhongShan.27.2181129","ZhongShan.27.2181130","ZhongShan.27.2181131","ZhongShan.27.2181132",
+                                "ZhongShan.27.2181133","ZhongShan.27.2181134","ZhongShan.27.2181135","ZhongShan.27.2181136",
+                                "ZhongShan.27.2187273","ZhongShan.27.2187274","ZhongShan.27.2187275","ZhongShan.27.2187276",
+                                "ZhongShan.27.2187277","ZhongShan.27.2187278","ZhongShan.27.2187279","ZhongShan.27.2187280",
+                                "ZhongShan.27.2189321","ZhongShan.27.2189322","ZhongShan.27.2189323","ZhongShan.27.2189324",
+                                "ZhongShan.27.2189325","ZhongShan.27.2189326","ZhongShan.27.2189327","ZhongShan.27.2189328",
+                                "ZhongShan.27.2191369","ZhongShan.27.2191370","ZhongShan.27.2191371","ZhongShan.27.2191372",
+                                "ZhongShan.27.2191373","ZhongShan.27.2191374","ZhongShan.27.2191375","ZhongShan.27.2191376" ] # 共48个
+  return_air_temperature_uid: [ "abbc6509_0004_45ed_8596_257e1e961566","fc55ccbe_1b66_4f5a_94be_fb6a9cbeaf1e","431d54b4_b25f_4f73_8f97_14509226cff1",
+                                "1ea16170_5773_44fb_8d0b_0b8d1158f48f","bba3afd4_573f_4f90_b914_88082ba37fc2","ec06637d_cab9_425b_8b40_eb0856c75717" ]
+  return_air_humidity_uid: [ "6efaff90_1710_4ff8_a984_c2e9738b0854","44d8bc51_a008_4b06_8213_4f57f20a6e36","e5c213b4_eb65_4c3c_8a37_de691a660ae1",
+                             "b0c8d5bc_71d0_47d1_bd13_5160e181885d","9202acf8_8fc5_4a60_ae41_cfafa38f66a5", "37395160_fb49_40e8_a3d1_cb3a0d212595" ]
+  energy_consumption_collection_uid: [ "df07a719_f112_494f_ad57_910c6d3466aa", "c413bdb5_de18_4f1c_ba6f_c2ac6a7d0b46","ae51067a_0ac3_4970_a0a9_386f8acc33cc" ]
+  # 空调参数
+  air_conditioner_setting_temperature_uid: [ "a9389c32_d9ae_4b6f_8f36_cc44a579cbe3","1a15bfc4_061e_4fd9_83b3_935913245442","3d095d6a_10b0_49ca_b34f_3a43fd6b8323",
+                                             "5ec2439a_0b25_4e43_9a03_12c278944a88","4d620ccd_995f_4bbc_aa45_97e1770fea8f","c7ce0642_06e2_4570_92ed_33b479f3e63e" ]
+  air_conditioner_setting_humidity_uid: [ "2d24efd0_f399_49ff_a432_c24c1a275104","e8544812_8634_4c39_b752_86cebdddbd0f","16b715e0_737c_413a_8096_7be04504d0fe",
+                                          "71bc3eb7_a849_48c7_b3f4_c31ae90f9d3d","a436bad2_9c9f_4a24_960c_5c5dd77bc4cc","5b21d614_276e_4235_95f5_802428015400" ]
+  air_conditioner_cooling_mode_uid: [ "c80d7d41_ba9e_447c_940a_e4bfac5b9b45","5a11fef2_f67f_45cc_b373_17146f52578c","54543fbb_5fc8_4402_96b3_497b8fb28d60","5387d77e_8b6b_4f55_ba9d_1d668786c90a",
+                                      "b45ac2fa_3001_4ce5_9492_550ea45038b0",
+                                      "3adead0e_419c_4918_979d_272a6e647399","73f94560_4ee9_4a52_b534_65ae914ac21b","ed85cb79_4b9b_456a_beef_32b848c03852" ]  # 每台艾特网能空调都有两个uid，对应于系统1、2
+
+setting_data_uid:
+  # 空调参数
+  air_conditioner_setting_temperature_uid: [ "a9389c32_d9ae_4b6f_8f36_cc44a579cbe3","1a15bfc4_061e_4fd9_83b3_935913245442","3d095d6a_10b0_49ca_b34f_3a43fd6b8323",
+                                             "5ec2439a_0b25_4e43_9a03_12c278944a88","4d620ccd_995f_4bbc_aa45_97e1770fea8f","c7ce0642_06e2_4570_92ed_33b479f3e63e" ]
+  air_conditioner_setting_humidity_uid: [ "2d24efd0_f399_49ff_a432_c24c1a275104","e8544812_8634_4c39_b752_86cebdddbd0f","16b715e0_737c_413a_8096_7be04504d0fe",
+                                          "71bc3eb7_a849_48c7_b3f4_c31ae90f9d3d","a436bad2_9c9f_4a24_960c_5c5dd77bc4cc","5b21d614_276e_4235_95f5_802428015400" ]
+  air_conditioner_cooling_mode_uid: [ "c80d7d41_ba9e_447c_940a_e4bfac5b9b45","5a11fef2_f67f_45cc_b373_17146f52578c","54543fbb_5fc8_4402_96b3_497b8fb28d60","5387d77e_8b6b_4f55_ba9d_1d668786c90a",
+                                      "b45ac2fa_3001_4ce5_9492_550ea45038b0",
+                                      "3adead0e_419c_4918_979d_272a6e647399","73f94560_4ee9_4a52_b534_65ae914ac21b","ed85cb79_4b9b_456a_beef_32b848c03852" ]  # 每台艾特网能空调都有两个uid，对应于系统1、2

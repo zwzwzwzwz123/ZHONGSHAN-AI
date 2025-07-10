@@ -1,0 +1,35 @@
+RF:
+  sequence_length: 8
+  predict_length: 4
+  n_estimators: 50
+  max_depth: 10
+
+Bayes:
+  sequence_length: 8
+  predict_length: 4
+  n_restarts_optimizer: 30
+
+LSTM: &same_model_params
+  sequence_length: 8
+  predict_length: 4
+  epochs: 500
+  learning_rate: 0.01
+  hidden_size: 256
+  num_layers: 3
+
+GRU:
+  <<: *same_model_params
+  sequence_length: 8
+  predict_length: 4
+
+MLP:
+  <<: *same_model_params
+  sequence_length: 8
+  predict_length: 4
+  batch_size: 512
+  hidden_dims: [8]
+
+Transformer:
+  <<: *same_model_params
+  num_heads: 2
+  dropout: 0.0

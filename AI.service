@@ -1,0 +1,13 @@
+[Unit]
+Description=AI Service
+After=network.target
+
+[Service]
+ExecStart=/root/AI_power_predict/main1
+WorkingDirectory=/root/AI_power_predict/
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

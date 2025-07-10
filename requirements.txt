@@ -1,0 +1,89 @@
+# 佛山AI项目依赖文件
+# 基于代码审查生成，适用于Python 3.12+
+# 生成日期: 2025-07-10 （augment大力支持）
+
+# ===== 核心数据处理库 =====
+numpy>=1.24.0,<2.4.0          # 数值计算基础库，用于数据处理和模型计算
+pandas>=2.0.0,<2.4.0          # 数据分析和处理，用于时序数据操作
+
+# ===== 数据库连接 =====
+influxdb>=5.3.2,<6.0.0        # InfluxDB时序数据库客户端，用于数据存储和查询
+
+# ===== 配置文件处理 =====
+PyYAML>=6.0,<7.0              # YAML配置文件解析，用于configs.yaml和oa_args.yaml
+
+# ===== 机器学习框架 =====
+# 深度学习框架
+torch>=2.0.0,<2.5.0          # PyTorch深度学习框架，用于MLP、GRU、LSTM、Transformer模型
+torchvision>=0.15.0,<0.20.0  # PyTorch视觉库（torch依赖）
+
+# 传统机器学习
+scikit-learn>=1.3.0,<1.6.0   # 机器学习库，用于RandomForest、GaussianProcess等模型
+joblib>=1.3.0,<1.5.0         # 模型序列化，sklearn依赖
+
+# ===== 深度强化学习 =====
+stable-baselines3>=2.0.0,<3.0.0  # 强化学习算法库，用于DQN、PPO、DDPG、SAC
+gymnasium>=0.28.0,<1.0.0     # 强化学习环境接口（stable-baselines3依赖）
+
+# ===== 优化算法 =====
+scipy>=1.10.0,<1.15.0        # 科学计算库，用于模拟退火、遗传算法、梯度下降
+bayesian-optimization>=1.4.0,<2.0.0  # 贝叶斯优化算法
+
+# ===== 通信协议 =====
+paho-mqtt>=1.6.0,<2.0.0      # MQTT客户端，用于设备通信
+requests>=2.28.0,<3.0.0      # HTTP请求库，用于API通信
+
+# ===== 进度显示 =====
+tqdm>=4.64.0,<5.0.0          # 进度条显示，用于训练过程可视化
+
+# ===== 系统依赖（自动安装的传递依赖） =====
+# 以下依赖通常会被上述包自动安装，但为了确保兼容性明确列出
+
+# influxdb依赖
+msgpack>=1.0.0,<2.0.0        # 消息序列化格式
+python-dateutil>=2.8.0,<3.0.0  # 日期时间处理
+pytz>=2022.1                 # 时区处理
+six>=1.16.0                  # Python 2/3兼容性库
+
+# requests依赖
+certifi>=2022.12.7           # SSL证书验证
+charset-normalizer>=3.0.0,<4.0.0  # 字符编码检测
+idna>=3.4,<4.0               # 国际化域名处理
+urllib3>=1.26.0,<3.0.0       # HTTP库
+
+# pandas依赖
+tzdata>=2022.1               # 时区数据
+
+# torch依赖（如果需要CUDA支持，请参考PyTorch官网安装指南）
+# 默认安装CPU版本，如需GPU版本请使用：
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# ===== 开发和调试工具（可选） =====
+# 以下依赖用于开发和调试，生产环境可以移除
+# ipython>=8.0.0,<9.0.0      # 交互式Python环境
+# jupyter>=1.0.0,<2.0.0      # Jupyter Notebook
+# matplotlib>=3.6.0,<4.0.0   # 数据可视化
+# seaborn>=0.12.0,<1.0.0     # 统计数据可视化
+
+# ===== 版本说明 =====
+# 1. 所有版本范围都考虑了Python 3.12兼容性
+# 2. 主要依赖使用较新的稳定版本，确保功能完整性
+# 3. 版本上限设置避免了可能的破坏性更新
+# 4. 传递依赖明确列出，确保环境一致性
+
+# ===== 安装说明 =====
+# 标准安装: pip install -r requirements.txt
+# 如需GPU支持: 
+#   1. 先安装CUDA版本的PyTorch: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#   2. 再安装其他依赖: pip install -r requirements.txt --no-deps torch torchvision
+# 
+# 离线安装:
+#   1. 下载依赖: pip download -r requirements.txt -d ./packages
+#   2. 离线安装: pip install --no-index --find-links ./packages -r requirements.txt
+
+# ===== 已修复的问题 =====
+# 1. 移除了内置模块依赖: datetime, logging, typing
+# 2. 修复了版本号格式错误
+# 3. 添加了代码中实际使用的所有第三方库
+# 4. 确保了依赖间的版本兼容性
+# 5. 添加了详细的注释说明每个依赖的用途

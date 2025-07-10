@@ -1,0 +1,4 @@
+# omit compile files
+build/
+dist/
+main.spec

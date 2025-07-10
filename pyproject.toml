@@ -1,0 +1,13 @@
+[project]
+name = "zhongshan-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datetime>=5.5",
+    "influxdb>=5.3.2",
+    "logging>=0.4.9.6",
+    "pandas>=2.3.0",
+    "typing>=3.10.0.0",
+]

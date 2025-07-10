@@ -1,0 +1,155 @@
+influxdb:
+  influxdbout:
+    host: "212.11.149.42"
+    port: 8086
+    username: "root"
+    password: "zxm10"
+    database_name: "iot_origin_database"
+
+  influxdbin:
+    host: "212.11.149.42"
+    port: 8086
+    username: "root"
+    password: "zxm10"
+    database_name: "iot_origin_database"
+
+model_name: "MLP"
+oa_name: "GDA"
+space_id: 5
+time_rest: 300
+room_name: "新大楼二楼无线交换局机房11#EISU"
+device_uid:
+ac_num_params:
+ac_freq_num_params:
+predict_result_name_list:
+  [
+    "ai_predict_it_load",
+    "ai_predict_indoor_temp",
+    "ai_predict_air_inlet_temp",
+    "ai_predict_air_return_temp",
+  ]
+
+output_list:
+  oa: "ai_energy_saving_suggestions"
+  it: "ai_predict_it_load"
+  temp: "ai_predict_it_load"
+  airin: "ai_predict_air_inlet_temp"
+  airreturn: "ai_predict_air_return_temp"
+  pue: "ai_predict_pue"
+  log: "ai_algorithm_log"
+  acc: "ai_algorithm_accuracy"
+  iter: "ai_algorithm_iterative"
+
+output_uid:
+  ai_predict_it_load: "1"
+  ai_predict_indoor_temp: "2"
+  ai_predict_air_inlet_temp: "3"
+  ai_predict_air_return_temp: "4"
+
+#  该行以上均未修改
+
+uid:
+  device_uid:
+    ac: ["95207247-6d63-480c-8dba-4dd18fa6ad74", "77db6bc2-5165-4011-be0c-108b0429f6dd","d495e162-0f3a-4e26-adcd-103fff68b5a0",
+        "16680285-3996-4011-8525-82adbacba5a5", "50200f7b-1158-40a6-8604-3959e395db2c", "326650fc-aef5-43f9-8405-37e5555e2df5"]  #该项已修改
+    # converter: ["3ca75675-e4f3-4813-9298-1e7d8c9090f7"]    注释压缩机
+  input_predict_uid: ["FoShan.50.16789507","FoShan.50.16789517"]    #该项未修改
+  output_predict_uid: ["FoShan.50.16787521","FoShan.50.16789505"]   #该项未修改
+  # all_uid未修改
+  all_uid:     
+    [
+      "FoShan.50.16789507",
+      "FoShan.50.16789517",
+      "FoShan.50.16787521",
+      "FoShan.50.16789505",
+      "FoShan.50.16785473",
+    ]
+  input_optimization_uid:   
+    # room_temperature已修改
+    room_temperature: ["ZhongShan.27.2177025","ZhongShan.27.2177026","ZhongShan.27.2177027","ZhongShan.27.2177028",
+                      "ZhongShan.27.2177029","ZhongShan.27.2177030","ZhongShan.27.2177031","ZhongShan.27.2177032",
+                      "ZhongShan.27.2179073","ZhongShan.27.2179074","ZhongShan.27.2179075","ZhongShan.27.2179076",
+                      "ZhongShan.27.2179077","ZhongShan.27.2179078","ZhongShan.27.2179079","ZhongShan.27.2179080",
+                      "ZhongShan.27.2181121","ZhongShan.27.2181122","ZhongShan.27.2181123","ZhongShan.27.2181124",
+                      "ZhongShan.27.2181125","ZhongShan.27.2181126","ZhongShan.27.2181127","ZhongShan.27.2181128",
+                      "ZhongShan.27.2187265","ZhongShan.27.2187266","ZhongShan.27.2187267","ZhongShan.27.2187268",
+                      "ZhongShan.27.2187269","ZhongShan.27.2187270","ZhongShan.27.2187271","ZhongShan.27.2187272",
+                      "ZhongShan.27.2189313","ZhongShan.27.2189314","ZhongShan.27.2189315","ZhongShan.27.2189316",
+                      "ZhongShan.27.2189317","ZhongShan.27.2189318","ZhongShan.27.2189319","ZhongShan.27.2189320",
+                      "ZhongShan.27.2191361","ZhongShan.27.2191362","ZhongShan.27.2191363","ZhongShan.27.2191364",
+                      "ZhongShan.27.2191365","ZhongShan.27.2191366","ZhongShan.27.2191367","ZhongShan.27.2191368" ]
+    # ac_onoff_setting已修改
+    ac_onoff_setting:   
+      [
+        "c80d7d41_ba9e_447c_940a_e4bfac5b9b45",
+        "5a11fef2_f67f_45cc_b373_17146f52578c",
+        "54543fbb_5fc8_4402_96b3_497b8fb28d60",
+        "5387d77e_8b6b_4f55_ba9d_1d668786c90a",
+        "b45ac2fa_3001_4ce5_9492_550ea45038b0",
+        "3adead0e_419c_4918_979d_272a6e647399",
+        "73f94560_4ee9_4a52_b534_65ae914ac21b",
+        "ed85cb79_4b9b_456a_beef_32b848c03852"
+      ]
+    # ac_temperature已修改
+    ac_temperature:    
+      [
+      "abbc6509_0004_45ed_8596_257e1e961566",
+      "fc55ccbe_1b66_4f5a_94be_fb6a9cbeaf1e",
+      "431d54b4_b25f_4f73_8f97_14509226cff1",
+      "1ea16170_5773_44fb_8d0b_0b8d1158f48f",
+      "bba3afd4_573f_4f90_b914_88082ba37fc2",
+      "ec06637d_cab9_425b_8b40_eb0856c75717" 
+      ]
+    # ac_temperature_settings已修改
+    ac_temperature_settings:  
+      [
+      "a9389c32_d9ae_4b6f_8f36_cc44a579cbe3",
+      "1a15bfc4_061e_4fd9_83b3_935913245442",
+      "3d095d6a_10b0_49ca_b34f_3a43fd6b8323",
+      "5ec2439a_0b25_4e43_9a03_12c278944a88",
+      "4d620ccd_995f_4bbc_aa45_97e1770fea8f",
+      "c7ce0642_06e2_4570_92ed_33b479f3e63e"
+      ]
+
+   # 以下两项均未修改
+  output_optimization_uid: ["FoShan.50.16785473", "FoShan.50.16787521"]
+  device_uid_list: []
+
+# 添加映射关系配置 - 解决ac_onoff_setting(8个)到device_uid(6个)的映射问题
+mapping:
+  # ac_onoff_setting索引到device_uid索引的映射关系
+  # 前两个空调各有两个制冷剂系统，后四个空调各有一个制冷剂系统
+  ac_onoff_to_device: [0, 0, 1, 1, 2, 3, 4, 5]  # 8个ac_onoff对应到6个device
+  # ac_temperature_setting是一对一映射，6个对6个
+  ac_temp_to_device: [0, 1, 2, 3, 4, 5]
+
+name:
+  optimization:
+    #以下两项已修改 - 扩展为8个名称以匹配8个ac_onoff_setting
+    ac_onoff_status_setting: [
+      "艾特网能空调1#制冷开关-系统1",
+      "艾特网能空调1#制冷开关-系统2", 
+      "艾特网能空调2#制冷开关-系统1",
+      "艾特网能空调2#制冷开关-系统2",
+      "美的空调制冷开关",
+      "维谛精密空调1制冷开关",
+      "维谛空调2制冷开关", 
+      "维谛空调3制冷开关"
+    ]
+    ac_temperature_setting: ["艾特网能空调1#温度设定","艾特网能空调2#温度设定", "美的空调温度设定","维谛精密空调1温度设定" ,"维谛空调2温度设定", "维谛空调3温度设定"]
+    #注释掉压缩机部分
+    # converter_freq_setting: ["二楼空调变频器XVAC运行频率下限值"]  
+  
+
+# boundary和optimization均未修改
+boundary:
+  room_temp_lower_boundary: 17
+  room_temp_higher_boundary: 30
+  ac_temp_lower_boundary: 17
+  ac_temp_higher_boundary: 30
+
+optimization:
+  optimization_boundary:
+    lower_boundary: [26, 28]
+    upper_boundary: [30, 32]
+  default_optimization_result: [26, 28]
