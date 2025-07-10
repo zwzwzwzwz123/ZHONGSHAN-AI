@@ -1,7 +1,0 @@
-2025-07-10 13:50:59,206 - ERROR - ❌ 优化算法初始化失败: Custom_Optimization_V2.__init__() got an unexpected keyword argument 'converter_uid'
-2025-07-10 13:50:59,213 - ERROR - ❌ 测试失败: 正常运行 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
-2025-07-10 13:50:59,220 - ERROR - ❌ 测试失败: 正常运行 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
-2025-07-10 13:50:59,227 - ERROR - ❌ 测试失败: 正常运行 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
-2025-07-10 13:50:59,283 - ERROR - ❌ 测试失败: 高温告警 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
-2025-07-10 13:50:59,303 - ERROR - ❌ 测试失败: 高温告警 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
-2025-07-10 13:50:59,325 - ERROR - ❌ 测试失败: 高温告警 - AttributeError: 'NoneType' object has no attribute 'handle_optimization_process'
